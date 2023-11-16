@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngFor="let row of rows;let i = index">
+        <div class="square" *ngFor="let col of cols;let j= index">
+            <button type="button" class="btn btn-primary" (click)="makeMove(i,j)">{{ board[i][j] }}</button>
+        </div>
+    </div>
+</div>
