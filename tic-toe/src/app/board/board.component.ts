@@ -33,7 +33,7 @@ export class BoardComponent {
   }
 
   checkWinner() {
-    //let hasEmptyCell = false;
+    let hasEmptyCell = false;
 
     for (let i = 0; i < 3; i++) {
       if (this.board[i][0] === this.board[i][1] && this.board[i][0] === this.board[i][2] && this.board[i][0] !== '') {
@@ -58,26 +58,21 @@ export class BoardComponent {
       return;
     }
 
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (this.board[i][j] === '') {
+          hasEmptyCell = true;
+          break;
+        }
+      }
+    }
 
-    // nu functioneaza sa fac tie, daca implementez nu se mai schimba din X in 0
-    // console.log functioneaza si printeaza dar switchPlayer() nu este apelat
-
-    // for (let i = 0; i < 3; i++) {
-    //   for (let j = 0; j < 3; j++) {
-    //     if (this.board[i][j] === '') {
-    //       hasEmptyCell = true;
-    //       break;
-    //     }
-    //   }
-    // }
-
-    // if (!hasEmptyCell) {
-    //   alert("It's a tie!");
-    //   this.restartGame();
-    // } else {
-    //   console.log(hasEmptyCell);
-    //   this.switchPlayer();
-    // }
+    if (!hasEmptyCell) {
+      setTimeout(() => {
+        alert("It's a tie!");
+        this.restartGame();
+      }, 200);
+    } 
   }
 
   showWinnerAlert() {
